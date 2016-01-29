@@ -3,12 +3,22 @@
 namespace webCrud\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Iluminate\Routing\Route;
 
 use webCrud\Http\Requests;
 use webCrud\Http\Controllers\Controller;
+use webCrud\Cliente;
+
 
 class ClienteController extends Controller
 {
+    public function __contruct(){
+        $this->beforeFilter('@find,['only=>['edit','update','destroy']]);
+    }
+
+    public function find(Route $route){
+        $this->user = User::find($route->getParameter('cliente'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,16 +50,6 @@ class ClienteController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -59,10 +59,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::find($id);
-
         return response()->json(
-            $cliente->toArray()
+            $this-> cliente->toArray()
             );
     }
 
@@ -75,9 +73,8 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cliente = Cliente::find($id);
-        $cliente->fill($request->all());
-        $cliente->save();
+        this->$cliente->fill($request->all());
+        this->$cliente->save();
 
         return response()->json([
             "mensaje"=>"listo";
@@ -90,9 +87,14 @@ class ClienteController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+     */ 
+    public function destroy()
     {
-        //
+      $this->cliente->delete();
+
+      return response()->json([
+            "mensaje"=>"borrado";
+            ])
+
     }
 }
