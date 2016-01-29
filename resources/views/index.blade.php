@@ -3,9 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Mantenimiento de Clientes</title>
-<script src="js/jquery-1.3.1.min.js" type="text/javascript"></script>
-<script src="js/jquery.functions.js" type="text/javascript"></script>
-<link type="text/css" rel="stylesheet" href="css/estilo.css" />
+	{!!Html::style('css/bootstrap.min.css')!!}
+    {!!Html::style('css/metisMenu.min.css')!!}
+    {!!Html::style('css/sb-admin-2.css')!!}
+    {!!Html::style('css/font-awesome.min.css')!!}
 </head>
 
 <body>
@@ -14,8 +15,22 @@
     </div>
     <div id="tabla">
     
-    </div>
-</div>
-<span style="text-align:center;width:300px;margin:auto;display:block;margin-top:20px;">RibosoMatic.com</span>
+	<span id="nuevo"><a href="nuevo.php"><img src="img/add.png" alt="Agregar dato" /></a></span>
+		<table>
+	   		<tr>
+	   			<th>Nombres</th>
+	    		<th>Ciudad</th>
+	    		<th>Sexo</th>
+	    		<th>Telefono</th>
+	            <th>Fecha Nacimiento</th>
+	            <th></th>
+	            <th></th>
+	        </tr>
+	    </table>    </div>
+	    
+	{!!Html::script('js/jquery.min.js')!!}
+    {!!Html::script('js/bootstrap.min.js')!!}
+    {!!Html::script('js/metisMenu.min.js')!!}
+    {!!Html::script('js/sb-admin-2.js')!!}
 </body>
 </html>
