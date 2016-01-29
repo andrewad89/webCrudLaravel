@@ -24,9 +24,20 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function listing() {
+        $clientes = Cliente = all();
+        return response() => json(
+            $clientes-> toarray()
+            
+            );
+
+    }
+
     public function index()
     {
-        //
+        
+        return view('cliente.index');
     }
 
     /**
@@ -36,7 +47,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('cliente.create');
     }
 
     /**
@@ -47,10 +58,22 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         if($request->ajax()){
+            Cliente::create($request->all());
+            return response()->json([
+                "mensaje" => "creado"
+            ]);
+        }
     }
 
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+   
     /**
      * Show the form for editing the specified resource.
      *
