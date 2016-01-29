@@ -8,4 +8,10 @@ class Cliente extends Model
 {
     protected $table = "clientes";
     protected $primaryKey;
+
+    protected $fillable = [
+        'nombre', 'ciudad', 
+        'sexo','telefono',
+        'fecha_nacimiento',
+    ];
 }
