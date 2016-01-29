@@ -59,7 +59,11 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Cliente::find($id);
+
+        return response()->json(
+            $cliente->toArray()
+            );
     }
 
     /**
@@ -71,7 +75,14 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->fill($request->all());
+        $cliente->save();
+
+        return response()->json([
+            "mensaje"=>"listo";
+            ])
+
     }
 
     /**
