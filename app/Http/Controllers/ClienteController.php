@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 use webCrud\Http\Requests;
 use webCrud\Http\Controllers\Controller;
-use webCrud\Cliente;
 
-class UsuarioController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +26,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
     /**
@@ -60,8 +59,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::find($id);
-        return view(cliente.edit,['cliente'=>$cliente]);
+        //
     }
 
     /**
