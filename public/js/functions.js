@@ -34,7 +34,8 @@ var gestionClientes = ( function () {
 
 
 	var actualizar = (function(){
-	/*hay que implementar varias funciones, 
+	/*HOLhola
+	hay que implementar varias funciones, 
 	-la primera recoge mediante un evento click
 	los datos de una fila e inserta en una ventana modal esos datos
 	-la segunda recoge esos datos y los convierte en un objeto json
