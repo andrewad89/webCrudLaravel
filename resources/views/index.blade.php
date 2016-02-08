@@ -17,7 +17,7 @@
 <div id="contenedor">
    
     <div id="formulario" style="display:none;">
-<<<<<<< HEAD
+
     	
     
 
@@ -61,8 +61,8 @@ Cerrar
     </div>
 
 </div>
-<span style="text-align:center;width:300px;margin:auto;display:block;margin-top:20px;">RibosoMatic.com</span>
-=======
+<span style="text-align:center;width:300px;margin:auto;display:block;margin-top:20px;">
+    
     </div>
 
     <div id="tablaDatos">
@@ -74,6 +74,5 @@ Cerrar
     {!!Html::script('js/metisMenu.min.js')!!}
     {!!Html::script('js/sb-admin-2.js')!!}
     {!!Html::script('js/functions.js')!!}
->>>>>>> d1efa1cde109552c06b25ca3db499d4673e1b88d
 </body>
 </html>
