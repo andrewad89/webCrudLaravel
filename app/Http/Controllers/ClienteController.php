@@ -12,12 +12,12 @@ use webCrud\Cliente;
 
 class ClienteController extends Controller
 {
-    public function __contruct(){
-        $this->beforeFilter('@find,['only=>['edit','update','destroy']]);
+    public function __construct(){
+        $this->middleware('@find',['only'=>['edit','update','destroy']]);
     }
 
     public function find(Route $route){
-        $this->user = User::find($route->getParameter('cliente'));
+        $this->cliente = Cliente::find($route->getParameter('cliente'));
     }
     /**
      * Display a listing of the resource.
@@ -25,19 +25,16 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function listing() {
-        $clientes = Cliente = all();
-        return response() => json(
-            $clientes-> toarray()
-            
-            );
-
-    }
-
-    public function index()
-    {
+    public function listing(Request $request) {
         
-        return view('cliente.index');
+        if ($request->ajax()){
+            $clientes = Cliente::all();
+    
+            return response()->json(
+                $clientes->toarray() 
+            );
+        }
+        return view('index');
     }
 
     /**
@@ -96,12 +93,12 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        this->$cliente->fill($request->all());
-        this->$cliente->save();
+        $this->cliente->fill($request->all());
+        $this->cliente->save();
 
         return response()->json([
-            "mensaje"=>"listo";
-            ])
+            "mensaje"=>"listo"
+            ]);
 
     }
 
@@ -116,8 +113,8 @@ class ClienteController extends Controller
       $this->cliente->delete();
 
       return response()->json([
-            "mensaje"=>"borrado";
-            ])
+            "mensaje"=>"borrado"
+            ]);
 
     }
 }
