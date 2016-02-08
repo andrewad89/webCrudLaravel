@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var tablaDatos = $("#datos");
-	var route = "localhost:80/cliente";
+	var route = "localhost:8000/cliente";
 
 	$("#datos").empty();
 	$.get(route, function(res){

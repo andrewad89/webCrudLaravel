@@ -1,20 +1,19 @@
 $("#registro").click(function(){
-	var dato = $("#cliente").val();
-	var route = "localhost:80/cliente";
-	var token = $("#token").val();
+	var dato = $("#nombre").val();
+	var route = "localhost:8000/cliente";
+	
 
 	$.ajax({
 		url: route,
-		headers: {'X-CSRF-TOKEN': token},
 		type: 'POST',
 		dataType: 'json',
-		data:{cliente: dato},
+		data:{nombre: dato},
 
 		success:function(){
 			$("#msj-success").fadeIn();
 		},
 		error:function(msj){
-			$("#msj").html(msj.responseJSON.cliente);
+			$("#msj").html(msj.responseJSON.nombre);
 			$("#msj-error").fadeIn();
 		}
 	});
