@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 $("#registro").click(function(){
 	var dato = $("#nombre").val();
 	var route = "localhost:8000/cliente";
@@ -83,4 +83,4 @@ var gestionClientes = ( function () {
 	
 
 
->>>>>>> d1efa1cde109552c06b25ca3db499d4673e1b88d
+
