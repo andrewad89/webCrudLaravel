@@ -1,3 +1,6 @@
+
+
+ 
 //Aquí van los scripts
 
 var gestionClientes = ( function () {
@@ -5,18 +8,40 @@ var gestionClientes = ( function () {
 
 	var crear = (function (){
 	// llamar a formulario nuevo
-		$("#nuevo a").click(function(){
-			$("#formulario").show();
-			$("#tabla").hide();
-			$.ajax({
-				type: "GET",
-				url: 'nuevo.php',
-				success: function(datos){
-					$("#formulario").html(datos);
-				}
+	var creaDataClient = function() {
+ 	var dataclient = [
+    
+    {"nombre":$("#nombre").val(), 
+    "ciudad":$("#ciudad").val(), 
+    "sexo":$("#sexo").val(),
+    "telefono":$("#telefono").val(), 
+    "fecha_nacimiento":$("#fecha_nacimiento").val()}
+    ];
+   
+   return{dataclient:dataclient}
+ };
+
+$("#registro").click(function(){
+	
+	var route = "http://localhost:8000/";
+	
+	$.ajax({
+		url: route,
+		type: 'POST',
+		dataType: 'json',
+		data:dataclient,
+		success : introducirCliente(dataclient) {
+       },
+   
+
+	});
+});
+
+var introducirCliente = function(dataclient){
+			$(dataclient).each(function(key,value){
+			tablaDatos.append("<tr><td>"+value.nombre+"</td><td><button value="+value.id+" OnClick='Mostrar(this);' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>Editar</button><button class='btn btn-danger' value="+value.id+" OnClick='Eliminar(this);'>Eliminar</button></td></tr>");
 			});
-			return false;
-		});
+		};
 		return {}
 	}());
 
@@ -34,8 +59,7 @@ var gestionClientes = ( function () {
 
 
 	var actualizar = (function(){
-	/*HOLhola
-	hay que implementar varias funciones, 
+	/*hay que implementar varias funciones, 
 	-la primera recoge mediante un evento click
 	los datos de una fila e inserta en una ventana modal esos datos
 	-la segunda recoge esos datos y los convierte en un objeto json
@@ -60,5 +84,6 @@ var gestionClientes = ( function () {
 		gestionClientes.listar();
 	});
 	
+
 
 
