@@ -18,14 +18,7 @@ $("#registro").click(function(){
 		data:{telefono: dato4},
 		data:{fecha_nacimiento: dato5},
 
-		success:function(){
-			$("#msj-success").fadeIn();
-		},
-		error:function(msj){
-			$("#msj").html(msj.responseJSON.nombre);
-			$("#msj-error").fadeIn();
-		}
-	});
+		});
 });
 //Aquí van los scripts
 
