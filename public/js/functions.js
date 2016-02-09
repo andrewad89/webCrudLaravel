@@ -1,25 +1,6 @@
 
-$("#registro").click(function(){
-	var dato = $("#nombre").val();
-	var dato2 = $("#ciudad").val();
-	var dato3 = $("#sexo").val();
-	var dato4 = $("#telefono").val();
-	var dato5 = $("#fecha_nacimiento").val();
-	var route = "localhost:8000/cliente";
-	
 
-	$.ajax({
-		url: route,
-		type: 'POST',
-		dataType: 'json',
-		data:{nombre: dato},
-		data:{ciudad: dato2},
-		data:{sexo: dato3},
-		data:{telefono: dato4},
-		data:{fecha_nacimiento: dato5},
-
-		});
-});
+ 
 //Aquí van los scripts
 
 var gestionClientes = ( function () {
@@ -27,18 +8,40 @@ var gestionClientes = ( function () {
 
 	var crear = (function (){
 	// llamar a formulario nuevo
-		$("#nuevo a").click(function(){
-			$("#formulario").show();
-			$("#tabla").hide();
-			$.ajax({
-				type: "GET",
-				url: 'nuevo.php',
-				success: function(datos){
-					$("#formulario").html(datos);
-				}
+	var creaDataClient = function() {
+ 	var dataclient = [
+    
+    {"nombre":$("#nombre").val(), 
+    "ciudad":$("#ciudad").val(), 
+    "sexo":$("#sexo").val(),
+    "telefono":$("#telefono").val(), 
+    "fecha_nacimiento":$("#fecha_nacimiento").val()}
+    ];
+   
+   return{dataclient:dataclient}
+ };
+
+$("#registro").click(function(){
+	
+	var route = "http://localhost:8000/";
+	
+	$.ajax({
+		url: route,
+		type: 'POST',
+		dataType: 'json',
+		data:dataclient,
+		success : introducirCliente(dataclient) {
+       },
+   
+
+	});
+});
+
+var introducirCliente = function(dataclient){
+			$(dataclient).each(function(key,value){
+			tablaDatos.append("<tr><td>"+value.nombre+"</td><td><button value="+value.id+" OnClick='Mostrar(this);' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>Editar</button><button class='btn btn-danger' value="+value.id+" OnClick='Eliminar(this);'>Eliminar</button></td></tr>");
 			});
-			return false;
-		});
+		};
 		return {}
 	}());
 
