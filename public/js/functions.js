@@ -1,6 +1,10 @@
 
 $("#registro").click(function(){
 	var dato = $("#nombre").val();
+	var dato2 = $("#ciudad").val();
+	var dato3 = $("#sexo").val();
+	var dato4 = $("#telefono").val();
+	var dato5 = $("#fecha_nacimiento").val();
 	var route = "localhost:8000/cliente";
 	
 
@@ -9,6 +13,10 @@ $("#registro").click(function(){
 		type: 'POST',
 		dataType: 'json',
 		data:{nombre: dato},
+		data:{ciudad: dato2},
+		data:{sexo: dato3},
+		data:{telefono: dato4},
+		data:{fecha_nacimiento: dato5},
 
 		success:function(){
 			$("#msj-success").fadeIn();
@@ -19,7 +27,6 @@ $("#registro").click(function(){
 		}
 	});
 });
-=======
 //Aquí van los scripts
 
 var gestionClientes = ( function () {
@@ -56,8 +63,7 @@ var gestionClientes = ( function () {
 
 
 	var actualizar = (function(){
-	/*HOLhola
-	hay que implementar varias funciones, 
+	/*hay que implementar varias funciones, 
 	-la primera recoge mediante un evento click
 	los datos de una fila e inserta en una ventana modal esos datos
 	-la segunda recoge esos datos y los convierte en un objeto json
