@@ -30,8 +30,7 @@ $("#registro").click(function(){
 		type: 'POST',
 		dataType: 'json',
 		data:dataclient,
-		success : introducirCliente(dataclient) {
-       },
+		success : introducirCliente(dataclient)
    
 
 	});

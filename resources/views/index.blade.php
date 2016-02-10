@@ -14,56 +14,62 @@
 </head>
 
 <body>
-<div id="contenedor">
-   
-    <div id="formulario" style="display:none;">
 
-    	
-    
-
-<button type="btn btn-info" data-toogle="modal" data-target="#ventanaModal">
-    	Nuevo Cliente
-    	</button>
-
-<div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-<div class="modal-dialog">
-
-<div class="modal-content">
-
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="model" aria-hidden="true">&times;</button>
-	<h4> Aqui va la tabla</h4>
-</div>
-<div class="modal-body">
-cuerpoooo
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-primary" data-dismiss="modal">
-Cerrar 
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
 </button>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
 
-	
-	
-
-
-
-
-
-
-    <div id="tabla">
-    
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-
+  </div>
 </div>
-<span style="text-align:center;width:300px;margin:auto;display:block;margin-top:20px;">
-    
-    </div>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal">
+        Nuevo Cliente
+</button>  	
+
+<div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="ventanaModalLabel">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+            </div>
+
+            <div class="modal-body">
+                cuerpoooo
+            </div>
+
+            <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+                Cerrar 
+            </button>
+
+	       </div>
+	    </div>
+	</div>
+</div>
+
 
     <div id="tablaDatos">
     
