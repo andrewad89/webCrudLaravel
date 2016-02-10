@@ -38,16 +38,6 @@ class ClienteController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('cliente.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -55,8 +45,16 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+
          if($request->ajax()){
-            Cliente::create($request->all());
+            Cliente::create([
+                'nombre'=>$request['nombre'],
+                'ciudad'=>$request['ciudad'],
+                'sexo'=>$request['sexo'],
+                'telefono'=>$request['telefono'],
+                'fecha_nacimiento'=>$request['fecha_nacimiento'],
+            ]);
+
             return response()->json([
                 "mensaje" => "creado"
             ]);

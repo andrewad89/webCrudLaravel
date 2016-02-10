@@ -7,42 +7,55 @@ var gestionClientes = ( function () {
 
 
 	var crear = (function (){
-	// llamar a formulario nuevo
-	var creaDataClient = function() {
- 	var dataclient = [
+	
+		var creaDataClient = function() {
+ 			
+ 			var dataclient = [
     
-    {"nombre":$("#nombre").val(), 
-    "ciudad":$("#ciudad").val(), 
-    "sexo":$("#sexo").val(),
-    "telefono":$("#telefono").val(), 
-    "fecha_nacimiento":$("#fecha_nacimiento").val()}
-    ];
+    		{"nombre":$("#nombre").val(), 
+    		"ciudad":$("#ciudad").val(), 
+    		"sexo":$("#sexo").val(),
+    		"telefono":$("#telefono").val(), 
+    		"fecha_nacimiento":$("#fecha_nacimiento").val()}
+    		];
    
-   return{dataclient:dataclient}
- };
+   			return{dataclient}
+ 		};
 
-$("#registro").click(function(){
-	
-	var route = "http://localhost:8000/";
-	
-	$.ajax({
-		url: route,
-		type: 'POST',
-		dataType: 'json',
-		data:dataclient,
-		success : introducirCliente(dataclient)
-   
+ 		var introducirCliente = function(dataclient){
+ 			var tablaDatos = $("#tablaDatos");
 
-	});
-});
+				$(dataclient).each(function(key,value){
+				tablaDatos.append("<tr><td>"+value.nombre+"</td><td><button value="+value.id+" OnClick='Mostrar(this);' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>Editar</button><button class='btn btn-danger' value="+value.id+" OnClick='Eliminar(this);'>Eliminar</button></td></tr>");
+				});
+			};
 
-var introducirCliente = function(dataclient){
-			$(dataclient).each(function(key,value){
-			tablaDatos.append("<tr><td>"+value.nombre+"</td><td><button value="+value.id+" OnClick='Mostrar(this);' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>Editar</button><button class='btn btn-danger' value="+value.id+" OnClick='Eliminar(this);'>Eliminar</button></td></tr>");
+		var peticion= function(datacl){
+
+
+			$("#registro").click(function(){
+
+				
+				var route = "http://localhost:8000/guardar/";
+
+				//creaDataClient();
+			
+				$.ajax({
+					url: route,
+					type: 'POST',
+					dataType: 'json',
+					data:datacl,
+					success : introducirCliente(datacl)
+			
+				});
+
 			});
+
 		};
-		return {}
-	}());
+
+		 return {creaDataClient:creaDataClient,peticion:peticion}
+
+		}());
 
 	var listar = function (){
 		//genera la tabla dinamicamente a partir de un objeto json que viene por el metodo get
@@ -57,7 +70,7 @@ var introducirCliente = function(dataclient){
 	};
 
 
-	var actualizar = (function(){
+	var editar = (function(){
 	/*hay que implementar varias funciones, 
 	-la primera recoge mediante un evento click
 	los datos de una fila e inserta en una ventana modal esos datos
@@ -74,14 +87,16 @@ var introducirCliente = function(dataclient){
 
 		return{}
 	}());
-
-	return {crear:crear,listar:listar,actualizar:actualizar,borrar:borrar}
+	
+	return {crear:crear,listar:listar,editar:editar,borrar:borrar}
 
 }());
 
 	$(document).ready(function(){
 		gestionClientes.listar();
 	});
+
+	
 	
 
 
