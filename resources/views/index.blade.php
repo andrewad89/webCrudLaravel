@@ -11,52 +11,46 @@
     {!!Html::style('css/metisMenu.min.css')!!}
     {!!Html::style('css/sb-admin-2.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
+      
+  
+  
 </head>
 
 <body>
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
 
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal">
+        Nuevo Cliente
+</button>   
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal">
-        Nuevo Cliente
-</button>  	
-
-<div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="ventanaModalLabel">
-
-    <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
+    
+    <div class="modal-header">
 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
 
             </div>
 
             <div class="modal-body">
-                cuerpoooo
+                
+                <h1> DATOS CLIENTE</h1>
+                
+                <form method="post">
+                
+                NOMBRE: <input type="text" id="nombre"><BR>
+                CIUDAD:<input type="text" id="ciudad"><BR>
+                SEXO:<input type="text" id="sexo"><BR>
+                TELEFONO:<input type="text" id="telefono"><BR>
+                FECHA DE NACIMIENTO:<input type="text" id="fecha_nacimiento"><BR>
+                <input type="submit" id="registro" value="Aceptar" onClick="gestionClientes">
+                </form>
+
+
+ 
             </div>
 
             <div class="modal-footer">
@@ -67,13 +61,12 @@
                 Cerrar 
             </button>
 
-	       </div>
-	    </div>
-	</div>
+         </div>
+      </div>
+  </div>
 </div>
-
-
-    <div id="tablaDatos">
+      
+<div id="tablaDatos">
     
     </div>
 	    

@@ -3,6 +3,7 @@
  
 //Aquí van los scripts
 
+<<<<<<< HEAD
 
 
 
@@ -84,6 +85,11 @@
 
 
 
+=======
+$(function() {
+    $( "#fecha_nacimiento" ).datepicker();
+  });
+>>>>>>> 38d3d0c436a315b257241673da2339b95f52e58a
 
 var gestionClientes = ( function () {
 
@@ -104,8 +110,34 @@ var gestionClientes = ( function () {
    			return{dataclient}
  		};
 
+<<<<<<< HEAD
  		var introducirCliente = function(dataclient){
  			var tablaDatos = $("#tablaDatos");
+=======
+$("#registro").click(function(){
+
+	
+  var route = "http://localhost:8000/";
+	
+	$.ajax({
+		url: route,
+		type: 'POST',
+		dataType: 'json',
+
+		data:dataclient,
+
+		success:introducirCliente(dataclient)
+	
+	});
+});
+//Aquí van los scripts
+
+var gestionClientes = ( function () {
+
+		data:dataclient,
+		success : introducirCliente(dataclient)
+   
+>>>>>>> 38d3d0c436a315b257241673da2339b95f52e58a
 
 				$(dataclient).each(function(key,value){
 				tablaDatos.append("<tr><td>"+value.nombre+"</td><td><button value="+value.id+" OnClick='Mostrar(this);' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>Editar</button><button class='btn btn-danger' value="+value.id+" OnClick='Eliminar(this);'>Eliminar</button></td></tr>");
@@ -131,6 +163,13 @@ var gestionClientes = ( function () {
 			
 				});
 
+<<<<<<< HEAD
+=======
+
+var introducirCliente = function(dataclient){
+			$(dataclient).each(function(key,value){
+			tablaDatos.append("<tr><td>"+value.nombre+"</td><td><button value="+value.id+" OnClick='Mostrar(this);' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>Editar</button><button class='btn btn-danger' value="+value.id+" OnClick='Eliminar(this);'>Eliminar</button></td></tr>");
+>>>>>>> 38d3d0c436a315b257241673da2339b95f52e58a
 			});
 
 		};
