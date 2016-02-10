@@ -32,7 +32,7 @@
 <div class="modal-content">
 
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="model" aria-hidden="true">&times;</button>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	<h4> Aqui va la tabla</h4>
 </div>
 <div class="modal-body">

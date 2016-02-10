@@ -22,15 +22,14 @@ var gestionClientes = ( function () {
  };
 
 $("#registro").click(function(){
-<<<<<<< HEAD
+
 	var dato = $("#nombre").val();
 	var dato2 = $("#ciudad").val();
 	var dato3 = $("#sexo").val();
 	var dato4 = $("#telefono").val();
 	var dato5 = $("#fecha_nacimiento").val();
 	var route = "localhost:8000/cliente";
-=======
->>>>>>> 4242f5f4930924bbff116e128d44c207e0fae3e2
+
 	
 	var route = "http://localhost:8000/";
 	
@@ -38,7 +37,7 @@ $("#registro").click(function(){
 		url: route,
 		type: 'POST',
 		dataType: 'json',
-<<<<<<< HEAD
+
 		data:{nombre: dato},
 		data:{ciudad: dato2},
 		data:{sexo: dato3},
@@ -57,7 +56,7 @@ $("#registro").click(function(){
 //Aquí van los scripts
 
 var gestionClientes = ( function () {
-=======
+
 		data:dataclient,
 		success : introducirCliente(dataclient) {
        },
@@ -65,7 +64,7 @@ var gestionClientes = ( function () {
 
 	});
 });
->>>>>>> 4242f5f4930924bbff116e128d44c207e0fae3e2
+
 
 var introducirCliente = function(dataclient){
 			$(dataclient).each(function(key,value){
