@@ -1,6 +1,42 @@
 
 //Aquí van los scripts
 
+var fnac = $(document).ready(function() {
+    $('#fecha_nacimiento')
+        .datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '01/01/2010',
+            endDate: '12/30/2020'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#fecha_nacimiento').formValidation('revalidateField', 'date');
+        });
+
+    $('#fecha_nacimiento').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            date: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo de fecha esta vacio'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY',
+                        min: '01/01/2010',
+                        max: '12/30/2020',
+                        message: 'Esta fecha no es valida'
+                    }
+                }
+            }
+        }
+    });
+});
 
 var gestionClientes = ( function () {
 	

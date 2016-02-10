@@ -7,6 +7,8 @@
 </div>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Mantenimiento de Clientes</title>
+  {!!Html::style('css/bootstrap-datepicker.min.css')!!}
+  {!!Html::style('css/bootstrap-datepicker3.min.css')!!}
 	{!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/metisMenu.min.css')!!}
     {!!Html::style('css/sb-admin-2.css')!!}
@@ -23,41 +25,114 @@
         Nuevo Cliente
 </button>   
 <!-- Modal -->
-<<<<<<< HEAD
-=======
+
 <div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
     
-    <div class="modal-header">
+      <div class="modal-header">
 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Registro de Clientes</h4>
 
-            </div>
+      </div>
 
-            <div class="modal-body">
+        <div class="modal-body">
                 
                 <h1> DATOS CLIENTE</h1>
+
+        <form method="post" class="form-horizontal">
                 
-                <form method="post">
+          
+          <div class="form-group">
+            <label class="control-label col-xs-3">Nombre:</label>
+        
+            <div class="col-xs-9">
+              <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+            </div>
+      
+          </div>
+
+          
+          <div class="form-group">
+            <label class="control-label col-xs-3">Ciudad:</label>
+        
+            <div class="col-xs-9">
+              <input type="text" id="ciudad" class="form-control" placeholder="Ciudad">
+            </div>
+        
+          </div>
+        
+          
+          <div class="form-group">
+            <label class="control-label col-xs-3">Sexo:</label>
+        
+          <div class="col-xs-9">
+            <input type="text" id="sexo" class="form-control" placeholder="Sexo">
+          </div>
+        
+          </div>
                 
-                NOMBRE: <input type="text" id="nombre"><BR>
-                CIUDAD:<input type="text" id="ciudad"><BR>
-                SEXO:<input type="text" id="sexo"><BR>
-                TELEFONO:<input type="text" id="telefono"><BR>
-                FECHA DE NACIMIENTO:<input type="text" id="fecha_nacimiento"><BR>
+          
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Telefono:</label>
+        
+            <div class="col-xs-9">
+              <input type="text"  class="form-control" placeholder="Telefono">
+            </div>
+    
+          </div>
+                 
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" >F. Nacimiento:</label>
+        
+            <div class="col-xs-9">
+              <div class="input-group input-append date" id="fecha_nacimiento">
+
+                <input type="text"  id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date" >
+                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
+              </div>
+            </div>
+          </div>
                 
-                </form>
->>>>>>> 014647ee1010bab0ee591dd7c5781949da4fda4c
+                 
+                 <div class="form-group">
+                  
+                  <div class="col-xs-offset-3 col-xs-9">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">
+                                              Registrar
+                    </button>
+                      <button type="reset" class="btn btn-default" data-dismiss="modal">
+                                                Limpiar
+                      </button>
+
+                      </div>
+                      </div>
+                      </div>
+
+
+ 
+            </div>
+
+            <div class="modal-footer">
+          
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+                Cerrar 
+            </button>
+
+         </div>
+      </div>
+  </div>
+</div>
 
       
 <div id="tablaDatos">
     
     </div>
-	    
-	{!!Html::script('js/jquery.min.js')!!}
+    {!!Html::script('js/bootstrap-datepicker.min.js')!!}
+    {!!Html::script('js/jquery.min.js')!!}
     {!!Html::script('js/bootstrap.min.js')!!}
     {!!Html::script('js/metisMenu.min.js')!!}
     {!!Html::script('js/sb-admin-2.js')!!}
