@@ -23,7 +23,7 @@
         Nuevo Cliente
 </button>   
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
     
@@ -46,7 +46,7 @@
                 SEXO:<input type="text" id="sexo"><BR>
                 TELEFONO:<input type="text" id="telefono"><BR>
                 FECHA DE NACIMIENTO:<input type="text" id="fecha_nacimiento"><BR>
-                <input type="submit" id="registro" value="Aceptar" onClick="gestionClientes">
+                
                 </form>
 
 
