@@ -5,48 +5,6 @@
 
 var gestionClientes = ( function () {
 
-	var crear = (function (){
-	
-		var creaDataClient = function() {		
- 			var dataclient = {
-    		"nombre":$("#nombre").val(), 
-    		"ciudad":$("#ciudad").val(), 
-    		"sexo":$("#sexo").val(),
-    		"telefono":$("#telefono").val(), 
-    		"fecha_nacimiento":$("#fecha_nacimiento").val()
-    		};
-   
-   			return dataclient;
- 		};
-
- 		var introducirCliente = function(dataclient){
- 			var tablaDatos = $("#tablaDatos");
-
-				$(dataclient).each(function(key,value){
-				
-				});
-			};
-
-		var peticion= function(){
-
-			$("#registro").click(function(){
-				
-				var route = "http://localhost:8000/guardar/";
-
-				var datacl = creaDataClient();
-			
-				$.ajax({
-					url: route,
-					type: 'POST',
-					dataType: 'json',
-					data:datacl,
-					success : introducirCliente(datacl)		
-				});
-			});
-		}();
-
-	}());
-
 	var listar = (function (){
 		//genera la tabla dinamicamente a partir de un objeto json que viene por el metodo get
 		var generaTabla = function (){
@@ -74,7 +32,6 @@ var gestionClientes = ( function () {
 
 		var llenaTabla = function (tab,arr){
 
-			var divTabla = $("#tablaDatos");
 			var miTabla = tab;
 
 			$(arr).each( function (key,value){
@@ -112,8 +69,12 @@ var gestionClientes = ( function () {
 				});
 
 				$(miTabla).append(tr2);
-				$(divTabla).append(miTabla);
 			});
+		};
+
+		var mostrarTabla = function(t){
+
+			 $("#tablaDatos").append(t);
 		};
 
 		var peticionl= function(){	
@@ -127,11 +88,46 @@ var gestionClientes = ( function () {
 			})
 			.done(function (res){
 				llenaTabla(tabla,res);
-			});	
+				mostrarTabla(tabla);
+			});
 		};
 
-		return{peticionl:peticionl}
+		return{llenaTabla:llenaTabla,peticionl:peticionl}
 	
+	}());
+
+	var crear = (function (){
+	
+		var creaDataClient = function() {		
+ 			var dataclient = {
+    		"nombre":$("#nombre").val(), 
+    		"ciudad":$("#ciudad").val(), 
+    		"sexo":$("#sexo").val(),
+    		"telefono":$("#telefono").val(), 
+    		"fecha_nacimiento":$("#fecha_nacimiento").val()
+    		};
+   
+   			return dataclient;
+ 		};
+
+		var peticion= function(){
+
+			$("#registro").click(function(){
+				
+				var route = "http://localhost:8000/guardar/";
+
+				var datacl = creaDataClient();
+			
+				$.ajax({
+					url: route,
+					type: 'POST',
+					dataType: 'json',
+					data:datacl,
+					success : listar.llenaTabla($(".table"),datacl)		
+				});
+			});
+		}();
+
 	}());
 
 
