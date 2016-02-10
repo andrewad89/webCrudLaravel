@@ -3,6 +3,10 @@
  
 //Aquí van los scripts
 
+$(function() {
+    $( "#fecha_nacimiento" ).datepicker();
+  });
+
 var gestionClientes = ( function () {
 
 
@@ -23,34 +27,18 @@ var gestionClientes = ( function () {
 
 $("#registro").click(function(){
 
-	var dato = $("#nombre").val();
-	var dato2 = $("#ciudad").val();
-	var dato3 = $("#sexo").val();
-	var dato4 = $("#telefono").val();
-	var dato5 = $("#fecha_nacimiento").val();
-	var route = "localhost:8000/cliente";
-
 	
-	var route = "http://localhost:8000/";
+  var route = "http://localhost:8000/";
 	
 	$.ajax({
 		url: route,
 		type: 'POST',
 		dataType: 'json',
 
-		data:{nombre: dato},
-		data:{ciudad: dato2},
-		data:{sexo: dato3},
-		data:{telefono: dato4},
-		data:{fecha_nacimiento: dato5},
+		data:dataclient,
 
-		success:function(){
-			$("#msj-success").fadeIn();
-		},
-		error:function(msj){
-			$("#msj").html(msj.responseJSON.nombre);
-			$("#msj-error").fadeIn();
-		}
+		success:introducirCliente(dataclient)
+	
 	});
 });
 //Aquí van los scripts
