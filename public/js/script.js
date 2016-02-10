@@ -1,4 +1,4 @@
-$("#registro").click(function(){
+("#registro").click(function(){
 	var dato = $("#genre").val();
 	var route = "/genero";
 	var token = $("#token").val();
