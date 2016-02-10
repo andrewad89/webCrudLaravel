@@ -58,8 +58,7 @@ $("#registro").click(function(){
 var gestionClientes = ( function () {
 
 		data:dataclient,
-		success : introducirCliente(dataclient) {
-       },
+		success : introducirCliente(dataclient)
    
 
 	});
