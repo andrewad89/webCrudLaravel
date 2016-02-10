@@ -3,22 +3,19 @@
 
 
 var gestionClientes = ( function () {
-
-
+	
 	var crear = (function (){
 	
-		var creaDataClient = function() {
- 			
- 			var dataclient = [
-    
-    		{"nombre":$("#nombre").val(), 
+		var creaDataClient = function() {		
+ 			var dataclient = {
+    		"nombre":$("#nombre").val(), 
     		"ciudad":$("#ciudad").val(), 
     		"sexo":$("#sexo").val(),
     		"telefono":$("#telefono").val(), 
-    		"fecha_nacimiento":$("#fecha_nacimiento").val()}
-    		];
+    		"fecha_nacimiento":$("#fecha_nacimiento").val()
+    		};
    
-   			return{dataclient}
+   			return dataclient;
  		};
 
  		var introducirCliente = function(dataclient){
@@ -29,32 +26,25 @@ var gestionClientes = ( function () {
 				});
 			};
 
-		var peticion= function(datacl){
-
+		var peticion= function(){
 
 			$("#registro").click(function(){
-
 				
 				var route = "http://localhost:8000/guardar/";
 
-				//creaDataClient();
+				var datacl = creaDataClient();
 			
 				$.ajax({
 					url: route,
 					type: 'POST',
 					dataType: 'json',
 					data:datacl,
-					success : introducirCliente(datacl)
-			
+					success : introducirCliente(datacl)		
 				});
-
 			});
+		}();
 
-		};
-
-		 return {creaDataClient:creaDataClient,peticion:peticion}
-
-		}());
+	}());
 
 	var listar = function (){
 		//genera la tabla dinamicamente a partir de un objeto json que viene por el metodo get

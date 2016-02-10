@@ -23,6 +23,34 @@
         Nuevo Cliente
 </button>   
 <!-- Modal -->
+<<<<<<< HEAD
+=======
+<div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+    <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+            </div>
+
+            <div class="modal-body">
+                
+                <h1> DATOS CLIENTE</h1>
+                
+                <form method="post">
+                
+                NOMBRE: <input type="text" id="nombre"><BR>
+                CIUDAD:<input type="text" id="ciudad"><BR>
+                SEXO:<input type="text" id="sexo"><BR>
+                TELEFONO:<input type="text" id="telefono"><BR>
+                FECHA DE NACIMIENTO:<input type="text" id="fecha_nacimiento"><BR>
+                
+                </form>
+>>>>>>> 014647ee1010bab0ee591dd7c5781949da4fda4c
 
       
 <div id="tablaDatos">
