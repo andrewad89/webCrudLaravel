@@ -55,14 +55,15 @@ var gestionClientes = (function (){
 			var tr1 = $("<tr>");
 			var thArr = [];
 	
-			for(i=1;i<7;i++){
+			for(i=1;i<8;i++){
 					thArr[i]= $("<th>");
 				};	
 			$(thArr[1]).append("Nombre");
-			$(thArr[2]).append("Ciudad");
-			$(thArr[3]).append("Sexo");
-			$(thArr[4]).append("Telefono");
-			$(thArr[5]).append("Fecha de nacimiento");	
+			$(thArr[2]).append("Apellido");
+			$(thArr[3]).append("Ciudad");
+			$(thArr[4]).append("Sexo");
+			$(thArr[5]).append("Telefono");
+			$(thArr[6]).append("Fecha de nacimiento");	
 			$(thArr).each(function(){
 					$(tr1).append(this);
 				});
@@ -80,7 +81,7 @@ var gestionClientes = (function (){
 				var _this=this;
 				var tr2 = $("<tr>", {"id":value.id});
 				var tdArr =[];
-				for(i=1;i<7;i++){
+				for(i=1;i<8;i++){
 					tdArr[i]= $("<td>");
 				};
 				var editB = $("<button>", {
@@ -101,12 +102,13 @@ var gestionClientes = (function (){
 									text:"Eliminar"
 								});	
 				$(tdArr[1]).append(value.nombre);
-				$(tdArr[2]).append(value.ciudad);
-				$(tdArr[3]).append(value.sexo);
-				$(tdArr[4]).append(value.telefono);
-				$(tdArr[5]).append(value.fecha_nacimiento);
-				$(tdArr[6]).append(editB);
-				$(tdArr[6]).append(deleteB);
+				$(tdArr[2]).append(value.apellido);
+				$(tdArr[3]).append(value.ciudad);
+				$(tdArr[4]).append(value.sexo);
+				$(tdArr[5]).append(value.telefono);
+				$(tdArr[6]).append(value.fecha_nacimiento);
+				$(tdArr[7]).append(editB);
+				$(tdArr[7]).append(deleteB);
 				
 				$(tdArr).each(function(){
 					$(tr2).append(this);
