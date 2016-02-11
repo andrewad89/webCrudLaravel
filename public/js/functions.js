@@ -35,6 +35,7 @@ var gestionClientes = (function (){
 			var body = $("<tbody>");
 
 			$(arr).each( function (key,value){
+				var _this=this;
 				var tr2 = $("<tr>", {"id":value.id});
 				var tdArr =[];
 				for(i=1;i<7;i++){
@@ -44,11 +45,7 @@ var gestionClientes = (function (){
 									"class":"btn btn-primary",
 									"data-toggle":"modal",
 									"data-target":"#ventanaModal",
-									click: function(){editar.mostrar({	nombre:value.nombre,
-																		ciudad:value.ciudad,
-																		sexo:value.sexo,
-																		telefono:value.telefono,
-																		fecha_nacimiento:value.fecha_nacimiento});
+									click: function(){editar.mostrar(_this);
 													añadeId(value.id);
 										   			$("#registro").attr("value","editar");							   			
 									},
@@ -58,7 +55,7 @@ var gestionClientes = (function (){
 				var deleteB = $("<button>", {
 									"value":value.id,
 									"class":"btn btn-danger",
-									click:function(){eliminar(this)},
+									click:function(){eliminar(value.id)},
 									text:"Eliminar"
 								});
 	
@@ -192,6 +189,27 @@ var gestionClientes = (function (){
 	}());
 
 	var eliminar = function (id){
+		var ident= id;
+		var route = "http://localhost:8000/cliente/"+id+"";
+		var datacl = crear.creaDataClient();
+	
+		$.ajax({
+			url: route,
+			type: 'PUT',
+			dataType: 'json',
+			data:datacl
+		})
+		.done(function (){
+			var trO= $("#"+id);
+			var tbN= listar.llenaTabla(datacl);
+			var trN= tbN.children();
+			$(trO).replaceWith(trN);
+		});
+				};	
+			});
+		};
+
+		return{mostrar:mostrar,peticione:peticione}
 
 
 	};
