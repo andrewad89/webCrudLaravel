@@ -1,7 +1,12 @@
 
+<<<<<<< HEAD
 
 //Aquí van los scripts
+=======
+>>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
 
+//Aquí van los scripts
+/*
 var fnac = $(document).ready(function() {
     
     $('#fecha_nacimiento')
@@ -39,8 +44,12 @@ var fnac = $(document).ready(function() {
         }
     });
 });
+*/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
 var gestionClientes = (function (){
 
 	var listar = (function (){
@@ -77,6 +86,7 @@ var gestionClientes = (function (){
 			var body = $("<tbody>");
 
 			$(arr).each( function (key,value){
+				var _this=this;
 				var tr2 = $("<tr>", {"id":value.id});
 				var tdArr =[];
 				for(i=1;i<7;i++){
@@ -86,11 +96,7 @@ var gestionClientes = (function (){
 									"class":"btn btn-primary",
 									"data-toggle":"modal",
 									"data-target":"#ventanaModal",
-									click: function(){editar.mostrar({	nombre:value.nombre,
-																		ciudad:value.ciudad,
-																		sexo:value.sexo,
-																		telefono:value.telefono,
-																		fecha_nacimiento:value.fecha_nacimiento});
+									click: function(){editar.mostrar(_this);
 													añadeId(value.id);
 										   			$("#registro").attr("value","editar");							   			
 									},
@@ -100,11 +106,15 @@ var gestionClientes = (function (){
 				var deleteB = $("<button>", {
 									"value":value.id,
 									"class":"btn btn-danger",
-									click:function(){eliminar(this)},
+									click:function(){eliminar(value.id)},
 									text:"Eliminar"
+<<<<<<< HEAD
 								});
 
 	
+=======
+								});	
+>>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
 				$(tdArr[1]).append(value.nombre);
 				$(tdArr[2]).append(value.ciudad);
 				$(tdArr[3]).append(value.sexo);
@@ -235,8 +245,22 @@ var gestionClientes = (function (){
 	}());
 
 	var eliminar = function (id){
-
-
+		var ident= id;
+		var route = "http://localhost:8000/cliente/"+id+"";
+		var datacl = crear.creaDataClient();
+	
+		$.ajax({
+			url: route,
+			type: 'DELETE',
+			dataType: 'json',
+			data:datacl
+		})
+		.done(function (){
+			var trO= $("#"+id);
+			var tbN= listar.llenaTabla(datacl);
+			var trN= tbN.children();
+			$(trO).replaceWith(trN);
+		});
 	};
 
 	var init = function (){
@@ -246,7 +270,7 @@ var gestionClientes = (function (){
 		editar.peticione();
 	
 		$("body").on('hidden.bs.modal', '.modal', function () {
-    		$(".form>input").each(function(){$(this).val("")});
+    		$("#formulario>div>div>input").each(function(){$(this).val("")});
     	 });
 
 	};
