@@ -1,7 +1,7 @@
 
 
 //Aquí van los scripts
-
+/*
 var fnac = $(document).ready(function() {
     
     $('#fecha_nacimiento')
@@ -39,6 +39,7 @@ var fnac = $(document).ready(function() {
         }
     });
 });
+*/
 
 var gestionClientes = (function (){
 
@@ -235,7 +236,7 @@ var gestionClientes = (function (){
 	
 		$.ajax({
 			url: route,
-			type: 'PUT',
+			type: 'DELETE',
 			dataType: 'json',
 			data:datacl
 		})
@@ -245,13 +246,6 @@ var gestionClientes = (function (){
 			var trN= tbN.children();
 			$(trO).replaceWith(trN);
 		});
-				};	
-			});
-		};
-
-		return{mostrar:mostrar,peticione:peticione}
-
-
 	};
 
 	var init = function (){
@@ -261,7 +255,7 @@ var gestionClientes = (function (){
 		editar.peticione();
 	
 		$("body").on('hidden.bs.modal', '.modal', function () {
-    		$(".form>input").each(function(){$(this).val("")});
+    		$("#formulario>div>div>input").each(function(){$(this).val("")});
     	 });
 
 	};
