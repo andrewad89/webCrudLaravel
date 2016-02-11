@@ -10,7 +10,6 @@
     {!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
     {!!Html::style('css/bootstrap-datepicker.min.css')!!}
-    {!!Html::style('css/bootstrap-datepicker3.min.css')!!}
 </head>
 <body>
 
@@ -60,10 +59,10 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >F. Nacimiento:</label>
                         <div class="col-xs-9">
-                            <div class="input-group input-append date" id="fecha_nac">
+                            <div class="input-group date" id="fecha_nac">
                                 <input type="text" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date">
-                                <span class="input-group-addon add-on">
-                                    <span class="glyphicon <glyphicon-calendar></glyphicon-calendar>"></span>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
@@ -71,16 +70,14 @@
                              
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
-                            <button class="btn btn-primary" id="registro">Registrar</button>
                             <button type="reset" class="btn btn-default" >Limpiar</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" id="cerrar">
-                    Cerrar 
-                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="registro">Registrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrar">Cerrar </button>
             </div>
         </div>
       </div>
