@@ -12,7 +12,9 @@
 */
 
 Route::resource('cliente','ClienteController');
+
 Route::get('/','ClienteController@listing');
-Route::post('/guardar/','ClienteController@store');
+
+
 
 

@@ -16,7 +16,7 @@
 <body>
 
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal" id="nuevo">
         Nuevo Cliente
 </button>   
 <!-- Modal -->
@@ -36,7 +36,7 @@
                 
                 <h1> DATOS CLIENTE</h1>
                 
-                <form method="post">
+                <form class="form" method="post">
                 
                 NOMBRE: <input type="text" id="nombre"><BR>
                 CIUDAD:<input type="text" id="ciudad"><BR>
@@ -46,15 +46,13 @@
                 
                 </form>
 
-
- 
             </div>
 
             <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="registro">
-                registro
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="registro">
+                Guardar
             </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="cerrar">
                 Cerrar 
             </button>
 

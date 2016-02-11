@@ -1,12 +1,12 @@
 
-
- 
-//Aquí van los scripts
-
-var gestionClientes = ( function () {
+var gestionClientes = (function (){
 
 	var listar = (function (){
 		//genera la tabla dinamicamente a partir de un objeto json que viene por el metodo get
+		var añadeId= function (id){
+			$(".modal-dialog").attr("value",id);
+		};
+
 		var generaTabla = function (){
 
 			var miTabla = $("<table>",{"class":"table"});
@@ -30,29 +30,35 @@ var gestionClientes = ( function () {
 			return miTabla;
 		};
 
-		var llenaTabla = function (tab,arr){
+		var llenaTabla = function (arr){
 
-			var miTabla = tab;
+			var body = $("<tbody>");
 
 			$(arr).each( function (key,value){
-				var tr2 = $("<tr>");
+				var tr2 = $("<tr>", {"id":value.id});
 				var tdArr =[];
 				for(i=1;i<7;i++){
 					tdArr[i]= $("<td>");
 				};
 				var editB = $("<button>", {
-									"value":value.id,
 									"class":"btn btn-primary",
 									"data-toggle":"modal",
 									"data-target":"#ventanaModal",
-									click:gestionClientes.editar.mostrar(this),
+									click: function(){editar.mostrar({	nombre:value.nombre,
+																		ciudad:value.ciudad,
+																		sexo:value.sexo,
+																		telefono:value.telefono,
+																		fecha_nacimiento:value.fecha_nacimiento});
+													añadeId(value.id);
+										   			$("#registro").attr("value","editar");							   			
+									},
 									text:"Editar"
 								});
 	
 				var deleteB = $("<button>", {
 									"value":value.id,
 									"class":"btn btn-danger",
-									click:gestionClientes.eliminar(this),
+									click:function(){eliminar(this)},
 									text:"Eliminar"
 								});
 	
@@ -67,33 +73,34 @@ var gestionClientes = ( function () {
 				$(tdArr).each(function(){
 					$(tr2).append(this);
 				});
-
-				$(miTabla).append(tr2);
+				$(body).append(tr2);
 			});
+
+			return body;
 		};
 
-		var mostrarTabla = function(t){
-
-			 $("#tablaDatos").append(t);
+		var mostrarTabla = function(t,b){
+			$(t).append(b);
+			$("#tablaDatos").append(t);
 		};
 
-		var peticionl= function(){	
-
+		var peticionl= function(){
+				
 			var route = "http://localhost:8000/";
-			var tabla = generaTabla();
 
 			$.ajax({
 				url: route,
-				type: 'GET'		
+				type: 'GET'	
 			})
 			.done(function (res){
-				llenaTabla(tabla,res);
-				mostrarTabla(tabla);
+				var tabla = generaTabla();
+				var tbody = llenaTabla(res);
+				var tr = tbody.children();
+				mostrarTabla(tabla,tr);
 			});
 		};
 
-		return{llenaTabla:llenaTabla,peticionl:peticionl}
-	
+		return{llenaTabla:llenaTabla,mostrarTabla,peticionl:peticionl}
 	}());
 
 	var crear = (function (){
@@ -111,39 +118,76 @@ var gestionClientes = ( function () {
  		};
 
 		var peticion= function(){
+			var botonr = $("#registro");
 
-			$("#registro").click(function(){
-				
-				var route = "http://localhost:8000/guardar/";
-
-				var datacl = creaDataClient();
-			
-				$.ajax({
-					url: route,
-					type: 'POST',
-					dataType: 'json',
-					data:datacl,
-					success : listar.llenaTabla($(".table"),datacl)		
-				});
+			$("#nuevo").click(function(){
+				$(botonr).attr("value","crear");
 			});
-		}();
 
+			$(botonr).click(function(){
+				if($(botonr).attr("value")=="crear"){
+					var route = "http://localhost:8000/cliente";
+					var datacl = creaDataClient();
+				
+					$.ajax({
+						url: route,
+						type: 'POST',
+						dataType: 'json',
+						data:datacl
+					})
+					.done(function (){
+					var tbody = listar.llenaTabla(datacl);
+					var tr = tbody.children();
+					listar.mostrarTabla($(".table"),tr)
+					});
+				};	
+			});
+		};
+		return{creaDataClient:creaDataClient,peticion:peticion}
 	}());
-
 
 	var editar = (function(){
 	/*hay que implementar varias funciones, 
 	-la primera recoge mediante un evento click
-	los datos de una fila e inserta en una ventana modal esos datos
+	los datos del array de json e inserta en una ventana modal esos datos
 	-la segunda recoge esos datos y los convierte en un objeto json
 	-la tercera envía los datos en formato json a traves de una ruta que utiliza el metodo actualizar
-	desarrollado con laravel
-	*/
-		var mostrar= function(id){
+	desarrollado con laravel*/
+		var mostrar = function(json){
+
+			$("#nombre").val(json.nombre);
+			$("#ciudad").val(json.ciudad);
+			$("#sexo").val(json.sexo);
+			$("#telefono").val(json.telefono);
+			$("#fecha_nacimiento").val(json.fecha_nacimiento);
 
 		};
 
-		return{mostrar:mostrar}
+		var peticione= function(){		
+			var botonr = $("#registro");
+			$(botonr).click(function(){
+				if($(botonr).attr("value")=="editar"){
+					var id = parseInt($(".modal-dialog").attr("value"));
+					var route = "http://localhost:8000/cliente/"+id+"";
+					var datacl = crear.creaDataClient();
+				
+					$.ajax({
+						url: route,
+						type: 'PUT',
+						dataType: 'json',
+						data:datacl
+					})
+					.done(function (){
+						var trO= $("#"+id);
+						var tbN= listar.llenaTabla(datacl);
+						var trN= tbN.children();
+						$(trO).replaceWith(trN);
+					});
+				};	
+			});
+		};
+
+		return{mostrar:mostrar,peticione:peticione}
 
 	}());
 
@@ -151,13 +195,26 @@ var gestionClientes = ( function () {
 
 
 	};
+
+	var init = function (){
+
+		listar.peticionl();
+		crear.peticion();
+		editar.peticione();
 	
-	return {listar:listar,editar:editar,eliminar:eliminar}
+		$("body").on('hidden.bs.modal', '.modal', function () {
+    		$(".form>input").each(function(){$(this).val("")});
+    	 });
 
+	};
+	
+	return {init:init}
 }());
+	
+$("document").ready(gestionClientes.init());
+	
+	
 
-	$(document).ready(function(){
-		gestionClientes.listar.peticionl();
-	});
+	
 
 	
