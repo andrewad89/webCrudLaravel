@@ -7,12 +7,13 @@
 </div>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Mantenimiento de Clientes</title>
+  
   {!!Html::style('css/bootstrap-datepicker.min.css')!!}
   {!!Html::style('css/bootstrap-datepicker3.min.css')!!}
 	{!!Html::style('css/bootstrap.min.css')!!}
-    {!!Html::style('css/metisMenu.min.css')!!}
-    {!!Html::style('css/sb-admin-2.css')!!}
-    {!!Html::style('css/font-awesome.min.css')!!}
+  {!!Html::style('css/metisMenu.min.css')!!}
+  {!!Html::style('css/sb-admin-2.css')!!}
+  {!!Html::style('css/font-awesome.min.css')!!}
       
   
   
@@ -38,11 +39,11 @@
 
       </div>
 
-        <div class="modal-body">
+    <div class="modal-body">
                 
-                <h1> DATOS CLIENTE</h1>
+              
 
-        <form method="post" class="form-horizontal">
+        <form method="post" class="form-horizontal" id="formulario">
                 
           
           <div class="form-group">
@@ -92,7 +93,7 @@
               <div class="input-group input-append date" id="fecha_nacimiento">
 
                 <input type="text"  id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date" >
-                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
+                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
               </div>
             </div>
           </div>
@@ -101,26 +102,73 @@
                  <div class="form-group">
                   
                   <div class="col-xs-offset-3 col-xs-9">
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">
+                    <button type="submit" class="btn btn-primary" id="registro" onclick="peticion" >
                                               Registrar
                     </button>
-                      <button type="reset" class="btn btn-default" data-dismiss="modal">
+                      <button type="reset" class="btn btn-default" >
                                                 Limpiar
                       </button>
 
-                      </div>
-                      </div>
-                      </div>
+<script>
+  
+$(document).ready(function() {
+    
+    $('#fecha_nacimiento')
+        .datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '01/01/2010',
+            endDate: '12/30/2020'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#formulario').formValidation('revalidateField', 'date');
+        });
+
+    $('#formulario').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            date: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo de fecha esta vacio'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY',
+                        min: '01/01/2010',
+                        max: '12/30/2020',
+                        message: 'Esta fecha no es valida'
+                    }
+                }
+            }
+        }
+    });
+});
 
 
- 
-            </div>
 
-            <div class="modal-footer">
+
+
+
+  
+</script>
+                  </div>
+                </div>
+    </div>
+
+          <div class="modal-footer">
           
             <button type="button" class="btn btn-primary" data-dismiss="modal">
                 Cerrar 
             </button>
+ 
+          </div>
+
+           
 
          </div>
       </div>
@@ -131,6 +179,7 @@
 <div id="tablaDatos">
     
     </div>
+
     {!!Html::script('js/bootstrap-datepicker.min.js')!!}
     {!!Html::script('js/jquery.min.js')!!}
     {!!Html::script('js/bootstrap.min.js')!!}
