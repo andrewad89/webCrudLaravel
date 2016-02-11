@@ -2,6 +2,7 @@
 //Aquí van los scripts
 
 var fnac = $(document).ready(function() {
+    
     $('#fecha_nacimiento')
         .datepicker({
             format: 'mm/dd/yyyy',
@@ -10,10 +11,10 @@ var fnac = $(document).ready(function() {
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
-            $('#fecha_nacimiento').formValidation('revalidateField', 'date');
+            $('#formulario').formValidation('revalidateField', 'date');
         });
 
-    $('#fecha_nacimiento').formValidation({
+    $('#formulario').formValidation({
         framework: 'bootstrap',
         icon: {
             valid: 'glyphicon glyphicon-ok',
