@@ -11,18 +11,24 @@
   {!!Html::style('css/bootstrap-datepicker.min.css')!!}
   {!!Html::style('css/bootstrap-datepicker3.min.css')!!}
 	{!!Html::style('css/bootstrap.min.css')!!}
+<<<<<<< HEAD
   {!!Html::style('css/metisMenu.min.css')!!}
   {!!Html::style('css/sb-admin-2.css')!!}
   {!!Html::style('css/font-awesome.min.css')!!}
       
   
   
+=======
+    {!!Html::style('css/metisMenu.min.css')!!}
+    {!!Html::style('css/sb-admin-2.css')!!}
+    {!!Html::style('css/font-awesome.min.css')!!} 
+>>>>>>> 0dcd17fb9d59f8044e5592ace6affe329abdc8b8
 </head>
 
 <body>
 
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ventanaModal" id="nuevo">
         Nuevo Cliente
 </button>   
 <!-- Modal -->
@@ -41,9 +47,15 @@
 
     <div class="modal-body">
                 
+<<<<<<< HEAD
               
 
         <form method="post" class="form-horizontal" id="formulario">
+=======
+                <h1> DATOS CLIENTE</h1>
+                
+                <form class="form" method="post">
+>>>>>>> 0dcd17fb9d59f8044e5592ace6affe329abdc8b8
                 
           
           <div class="form-group">
@@ -86,6 +98,7 @@
           </div>
                  
 
+<<<<<<< HEAD
           <div class="form-group">
             <label class="control-label col-xs-3" >F. Nacimiento:</label>
         
@@ -95,6 +108,8 @@
                 <input type="text"  id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date" >
                     <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
               </div>
+=======
+>>>>>>> 0dcd17fb9d59f8044e5592ace6affe329abdc8b8
             </div>
           </div>
                 
@@ -109,6 +124,7 @@
                                                 Limpiar
                       </button>
 
+<<<<<<< HEAD
 <script>
   
 $(document).ready(function() {
@@ -163,6 +179,13 @@ $(document).ready(function() {
           <div class="modal-footer">
           
             <button type="button" class="btn btn-primary" data-dismiss="modal">
+=======
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="registro">
+                Guardar
+            </button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="cerrar">
+>>>>>>> 0dcd17fb9d59f8044e5592ace6affe329abdc8b8
                 Cerrar 
             </button>
  

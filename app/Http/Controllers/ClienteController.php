@@ -12,13 +12,6 @@ use webCrud\Cliente;
 
 class ClienteController extends Controller
 {
-    public function __construct(){
-        $this->middleware('@find',['only'=>['edit','update','destroy']]);
-    }
-
-    public function find(Route $route){
-        $this->cliente = Cliente::find($route->getParameter('cliente'));
-    }
     /**
      * Display a listing of the resource.
      *
@@ -47,39 +40,11 @@ class ClienteController extends Controller
     {
 
          if($request->ajax()){
-            Cliente::create([
-                'nombre'=>$request['nombre'],
-                'ciudad'=>$request['ciudad'],
-                'sexo'=>$request['sexo'],
-                'telefono'=>$request['telefono'],
-                'fecha_nacimiento'=>$request['fecha_nacimiento'],
-            ]);
-
+            Cliente::create($request->all());
             return response()->json([
                 "mensaje" => "creado"
             ]);
         }
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return response()->json(
-            $this-> cliente->toArray()
-            );
     }
 
     /**
@@ -91,8 +56,9 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->cliente->fill($request->all());
-        $this->cliente->save();
+        $cliente = Cliente::find($id);
+        $cliente->fill($request->all());
+        $cliente->save();
 
         return response()->json([
             "mensaje"=>"listo"
@@ -106,9 +72,10 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */ 
-    public function destroy()
+    public function destroy($id)
     {
-      $this->cliente->delete();
+      $cliente = Cliente::find($id);
+      $cliente->cliente->delete();
 
       return response()->json([
             "mensaje"=>"borrado"
