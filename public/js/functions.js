@@ -1,5 +1,5 @@
 
-var fnac = $(document).ready(function() {
+/*var fnac = $(document).ready(function() {
     
     $('#fecha_nacimiento')
         .datepicker({
@@ -35,7 +35,7 @@ var fnac = $(document).ready(function() {
             }
         }
     });
-});
+});*/
 
 
 
