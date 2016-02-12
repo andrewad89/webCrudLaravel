@@ -70,7 +70,7 @@
                         <div class="col-xs-9">
                             <div class="input-group date" id="fecha_nac">
                                 <input type="text" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date">
-                                <span class="input-group-addon">
+                                <span class="input-group-addon add-on">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
