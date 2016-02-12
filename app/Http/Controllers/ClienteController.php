@@ -22,12 +22,11 @@ class ClienteController extends Controller
         
         if ($request->ajax()){
             $clientes = Cliente::all();
-            $clientes->toarray();
-            $addape= array_push ( $clientes, apellidos, "Lopez Perez" );
+           
+       
             return response()->json( 
-
-            $addape;
-                 
+            $clientes->toarray()
+            
             );
         }
         return view('index');

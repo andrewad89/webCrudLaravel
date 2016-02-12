@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +8,7 @@
     </div>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mantenimiento de Clientes</title>  
+    
     {!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
     {!!Html::style('css/bootstrap-datepicker.min.css')!!}
@@ -35,6 +35,13 @@
                         <label class="control-label col-xs-3">Nombre:</label>       
                         <div class="col-xs-9">
                             <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+                        </div>       
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Apellido:</label>       
+                        <div class="col-xs-9">
+                            <input type="text" id="apellido" class="form-control" placeholder="Apellido">
                         </div>       
                     </div>
               
@@ -98,4 +105,4 @@
     </body>
 </html>
 
->>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
+

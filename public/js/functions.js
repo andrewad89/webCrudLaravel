@@ -1,12 +1,4 @@
 
-<<<<<<< HEAD
-
-//Aquí van los scripts
-=======
->>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
-
-//Aquí van los scripts
-/*
 var fnac = $(document).ready(function() {
     
     $('#fecha_nacimiento')
@@ -44,12 +36,9 @@ var fnac = $(document).ready(function() {
         }
     });
 });
-*/
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
+
 var gestionClientes = (function (){
 
 	var listar = (function (){
@@ -108,13 +97,13 @@ var gestionClientes = (function (){
 									"class":"btn btn-danger",
 									click:function(){eliminar(value.id)},
 									text:"Eliminar"
-<<<<<<< HEAD
+
 								});
 
 	
-=======
+
 								});	
->>>>>>> f86dcabdf6f4b00de8367e21ed3b7cb46aba7a6e
+
 				$(tdArr[1]).append(value.nombre);
 				$(tdArr[2]).append(value.ciudad);
 				$(tdArr[3]).append(value.sexo);
@@ -127,7 +116,7 @@ var gestionClientes = (function (){
 					$(tr2).append(this);
 				});
 				$(body).append(tr2);
-			});
+			};
 
 			return body;
 		};
@@ -209,6 +198,7 @@ var gestionClientes = (function (){
 		var mostrar = function(json){
 
 			$("#nombre").val(json.nombre);
+			$("#apellido").val("Lopez Perez");
 			$("#ciudad").val(json.ciudad);
 			$("#sexo").val(json.sexo);
 			$("#telefono").val(json.telefono);
