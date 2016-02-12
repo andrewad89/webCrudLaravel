@@ -43,8 +43,9 @@ class ClienteController extends Controller
 
          if($request->ajax()){
             Cliente::create($request->all());
+            $clientes=Cliente::all();
             return response()->json([
-                "mensaje" => "creado"
+                $clientes->last()
             ]);
         }
     }
@@ -77,7 +78,7 @@ class ClienteController extends Controller
     public function destroy($id)
     {
       $cliente = Cliente::find($id);
-      $cliente->cliente->delete();
+      $cliente->delete();
 
       return response()->json([
             "mensaje"=>"borrado"

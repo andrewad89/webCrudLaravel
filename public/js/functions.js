@@ -51,7 +51,7 @@ var gestionClientes = (function (){
 
 		var generaTabla = function (){
 
-			var miTabla = $("<table>",{"class":"table"});
+			var miTabla = $("<table>",{"class":"table table-hover"});
 			var tr1 = $("<tr>");
 			var thArr = [];
 	
@@ -97,8 +97,8 @@ var gestionClientes = (function (){
 	
 				var deleteB = $("<button>", {
 									"value":value.id,
-									"class":"btn btn-danger",
-									click:function(){eliminar(value.id)},
+									"class":"btn btn-danger elimina",
+									click:function(){eliminar(this)},
 									text:"Eliminar"
 								});	
 				$(tdArr[1]).append(value.nombre);
@@ -175,8 +175,8 @@ var gestionClientes = (function (){
 						dataType: 'json',
 						data:datacl
 					})
-					.done(function (){
-					var tbody = listar.llenaTabla(datacl);
+					.done(function (res){
+					var tbody = listar.llenaTabla(res);
 					var tr = tbody.children();
 					listar.mostrarTabla($(".table"),tr)
 					});
@@ -221,6 +221,7 @@ var gestionClientes = (function (){
 						var trO= $("#"+id);
 						var tbN= listar.llenaTabla(datacl);
 						var trN= tbN.children();
+						trN.attr("id",id);
 						$(trO).replaceWith(trN);
 					});
 				};	
@@ -231,22 +232,17 @@ var gestionClientes = (function (){
 
 	}());
 
-	var eliminar = function (id){
-		var ident= id;
-		var route = "http://localhost:8000/cliente/"+id+"";
-		var datacl = crear.creaDataClient();
-	
+	var eliminar = function (btn){
+		var ident= $(btn).parents("tr").attr("id");
+		var route = "http://localhost:8000/cliente/"+ident+"";
+
 		$.ajax({
 			url: route,
 			type: 'DELETE',
 			dataType: 'json',
-			data:datacl
 		})
 		.done(function (){
-			var trO= $("#"+id);
-			var tbN= listar.llenaTabla(datacl);
-			var trN= tbN.children();
-			$(trO).replaceWith(trN);
+			$("#"+ident).remove();
 		});
 	};
 

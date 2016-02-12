@@ -83,7 +83,7 @@
       </div>
     </div>
      
-    <div id="tablaDatos">
+    <div id="tablaDatos" class="col-md-8">
     </div>
 
     {!!Html::script('js/jquery.min.js')!!}
