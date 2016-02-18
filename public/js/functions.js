@@ -43,13 +43,15 @@ var fnac = $(document).ready(function() {
 
 var gestionClientes = (function (){
 
+	var arr=[];
+
 	var listar = (function (){
 		//genera la tabla dinamicamente a partir de un objeto json que viene por el metodo get
 		var añadeId= function (id){
 			$(".modal-dialog").attr("value",id);
 		};
 
-		var generaTabla = function (){
+		var generaTabla = function (res){
 
 			var miTabla = $("<table>",{"class":"table table-hover"});
 			var tr1 = $("<tr>");
@@ -133,7 +135,8 @@ var gestionClientes = (function (){
 				type: 'GET'	
 			})
 			.done(function (res){
-				var tabla = generaTabla();
+				gestionClientes.arr=res;
+				var tabla = generaTabla(res);
 				var tbody = llenaTabla(res);
 				var tr = tbody.children();
 				mostrarTabla(tabla,tr);
@@ -258,7 +261,7 @@ var gestionClientes = (function (){
 
 	};
 	
-	return {init:init}
+	return {init:init,arr:arr}
 }());
 	
 $("document").ready(gestionClientes.init());

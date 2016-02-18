@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mantenimiento de Clientes</title>  
     {!!Html::style('css/bootstrap.min.css')!!}
-    {!!Html::style('css/font-awesome.min.css')!!}
+    <!-- {!!Html::style('css/font-awesome.min.css')!!} -->
     {!!Html::style('css/bootstrap-datepicker.min.css')!!}
 </head>
 <body>
