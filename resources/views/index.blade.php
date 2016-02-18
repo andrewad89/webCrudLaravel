@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,6 +8,7 @@
     </div>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mantenimiento de Clientes</title>  
+    
     {!!Html::style('css/bootstrap.min.css')!!}
     <!-- {!!Html::style('css/font-awesome.min.css')!!} -->
     {!!Html::style('css/bootstrap-datepicker.min.css')!!}
@@ -32,6 +34,13 @@
                         <label class="control-label col-xs-3">Nombre:</label>       
                         <div class="col-xs-9">
                             <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+                        </div>       
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Apellido:</label>       
+                        <div class="col-xs-9">
+                            <input type="text" id="apellido" class="form-control" placeholder="Apellido">
                         </div>       
                     </div>
               
@@ -61,7 +70,7 @@
                         <div class="col-xs-9">
                             <div class="input-group date" id="fecha_nac">
                                 <input type="text" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date">
-                                <span class="input-group-addon">
+                                <span class="input-group-addon add-on">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
@@ -92,4 +101,5 @@
     {!!Html::script('js/functions.js')!!}
     </body>
 </html>
+
 

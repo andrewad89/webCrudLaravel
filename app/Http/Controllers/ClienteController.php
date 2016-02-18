@@ -23,10 +23,11 @@ class ClienteController extends Controller
         if ($request->ajax()){
             $clientes = Cliente::all();
             foreach ($clientes as $cliente) {
-                $cliente["apellido"]="Lopez Perez";
+            $cliente["apellido"]="Lopez Perez";
             }
             return response()->json(
                 $clientes->toarray() 
+
             );
         }
         return view('index');
@@ -38,6 +39,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
 

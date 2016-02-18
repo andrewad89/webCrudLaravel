@@ -1,45 +1,16 @@
 
-
-//Aquí van los scripts
-/*
-var fnac = $(document).ready(function() {
+$(document).ready(function() {
     
-    $('#fecha_nacimiento')
+    $('#fecha_nac')
         .datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '01/01/2010',
-            endDate: '12/30/2020'
+            format: 'dd/mm/yyyy',
+            startDate: '01/01/1900',
+            endDate: '30/12/2020'
         })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#formulario').formValidation('revalidateField', 'date');
-        });
-
-    $('#formulario').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'El campo de fecha esta vacio'
-                    },
-                    date: {
-                        format: 'MM/DD/YYYY',
-                        min: '01/01/2010',
-                        max: '12/30/2020',
-                        message: 'Esta fecha no es valida'
-                    }
-                }
-            }
-        }
-    });
+       
 });
-*/
+
+
 
 var gestionClientes = (function (){
 
@@ -102,7 +73,13 @@ var gestionClientes = (function (){
 									"class":"btn btn-danger elimina",
 									click:function(){eliminar(this)},
 									text:"Eliminar"
+
+								});
+
+	
+
 								});	
+
 				$(tdArr[1]).append(value.nombre);
 				$(tdArr[2]).append(value.apellido);
 				$(tdArr[3]).append(value.ciudad);
@@ -116,7 +93,7 @@ var gestionClientes = (function (){
 					$(tr2).append(this);
 				});
 				$(body).append(tr2);
-			});
+			
 
 			return body;
 		};
@@ -149,6 +126,7 @@ var gestionClientes = (function (){
 	var crear = (function (){
 	
 		var creaDataClient = function() {		
+ 			
  			var dataclient = {
     		"nombre":$("#nombre").val(), 
     		"ciudad":$("#ciudad").val(), 
@@ -196,8 +174,9 @@ var gestionClientes = (function (){
 	-la segunda recoge esos datos y los convierte en un objeto json
 	-la tercera envía los datos en formato json a traves de una ruta que utiliza el metodo actualizar
 	desarrollado con laravel*/
-		var mostrar = function(json){
 
+		var mostrar = function(json){
+			
 			$("#nombre").val(json.nombre);
 			$("#ciudad").val(json.ciudad);
 			$("#sexo").val(json.sexo);
