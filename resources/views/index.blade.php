@@ -10,7 +10,7 @@
     <title>Mantenimiento de Clientes</title>  
     
     {!!Html::style('css/bootstrap.min.css')!!}
-    <!-- {!!Html::style('css/font-awesome.min.css')!!} -->
+    {!!Html::style('css/font-awesome.min.css')!!}
     {!!Html::style('css/bootstrap-datepicker.min.css')!!}
 </head>
 <body>
@@ -69,7 +69,7 @@
                         <label class="control-label col-xs-3" >F. Nacimiento:</label>
                         <div class="col-xs-9">
                             <div class="input-group date" id="fecha_nac">
-                                <input type="text" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" name="date">
+                                <input type="text" id="fecha_nacimiento" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="Fecha de Nacimiento" name="date">
                                 <span class="input-group-addon add-on">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>

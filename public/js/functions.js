@@ -1,16 +1,4 @@
 
-$(document).ready(function() {
-    
-    $('#fecha_nac')
-        .datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: '01/01/1900',
-            endDate: '30/12/2020'
-        })
-       
-});
-
-
 
 var gestionClientes = (function (){
 
@@ -23,24 +11,11 @@ var gestionClientes = (function (){
 		};
 
 		var generaTabla = function (res){
-
+			var objArr=[];
+			$.each(res[0],function(key,value){if(typeof(value)=="string")objArr.push(key);});	
 			var miTabla = $("<table>",{"class":"table table-hover"});
 			var tr1 = $("<tr>");
-			var thArr = [];
-	
-			for(i=1;i<8;i++){
-					thArr[i]= $("<th>");
-				};	
-			$(thArr[1]).append("Nombre");
-			$(thArr[2]).append("Apellido");
-			$(thArr[3]).append("Ciudad");
-			$(thArr[4]).append("Sexo");
-			$(thArr[5]).append("Telefono");
-			$(thArr[6]).append("Fecha de nacimiento");	
-			$(thArr).each(function(){
-					$(tr1).append(this);
-				});
-			
+			$.each(objArr,function(key,value){$(tr1).append($("<th>").append(value))})
 			$(miTabla).append(tr1);
 
 			return miTabla;
@@ -54,9 +29,11 @@ var gestionClientes = (function (){
 				var _this=this;
 				var tr2 = $("<tr>", {"id":value.id});
 				var tdArr =[];
-				for(i=1;i<8;i++){
-					tdArr[i]= $("<td>");
-				};
+				
+				$.each(this,function(key,value){
+					if(typeof(value)=="string")tdArr.push($("<td>").append(value));
+				});
+				
 				var editB = $("<button>", {
 									"class":"btn btn-primary",
 									"data-toggle":"modal",
@@ -75,25 +52,13 @@ var gestionClientes = (function (){
 									text:"Eliminar"
 
 								});
-
-	
-
-								});	
-
-				$(tdArr[1]).append(value.nombre);
-				$(tdArr[2]).append(value.apellido);
-				$(tdArr[3]).append(value.ciudad);
-				$(tdArr[4]).append(value.sexo);
-				$(tdArr[5]).append(value.telefono);
-				$(tdArr[6]).append(value.fecha_nacimiento);
-				$(tdArr[7]).append(editB);
-				$(tdArr[7]).append(deleteB);
-				
+				tdArr.push($("<td>").append(editB));
+				tdArr.push($("<td>").append(deleteB));			
 				$(tdArr).each(function(){
 					$(tr2).append(this);
 				});
 				$(body).append(tr2);
-			
+			});
 
 			return body;
 		};
@@ -128,7 +93,8 @@ var gestionClientes = (function (){
 		var creaDataClient = function() {		
  			
  			var dataclient = {
-    		"nombre":$("#nombre").val(), 
+    		"nombre":$("#nombre").val(),
+    		"apellido":$("#apellido").val(), 
     		"ciudad":$("#ciudad").val(), 
     		"sexo":$("#sexo").val(),
     		"telefono":$("#telefono").val(), 
@@ -178,6 +144,7 @@ var gestionClientes = (function (){
 		var mostrar = function(json){
 			
 			$("#nombre").val(json.nombre);
+			$("#apellido").val(json.Apellido);
 			$("#ciudad").val(json.ciudad);
 			$("#sexo").val(json.sexo);
 			$("#telefono").val(json.telefono);
